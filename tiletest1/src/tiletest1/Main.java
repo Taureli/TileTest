@@ -10,9 +10,16 @@ import org.lwjgl.openal.AL;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.openal.SoundStore;
 
+
 //AUTHOR: JAKUB KAROLCZAK
 public class Main {
 
+    
+    //Generating map tiles
+    public static float tilex = 0, tiley = 0;
+    //Character position
+    public static float charx = 400, chary = 300;
+    //
     public static final int DISPLAY_WIDTH = 800;
     public static final int DISPLAY_HEIGHT = 600;
     public static final int CHARACTER_SIZE = 16;

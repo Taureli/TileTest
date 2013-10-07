@@ -21,14 +21,9 @@ import static tiletest1.Resources.*;
  */
 /**
  *
- * @author Kuba
+ * @author JAKUB KAROLCZAK
  */
 public class Draw {
-
-    //Generating map tiles
-    public static float tilex = 0, tiley = 0;
-    //Character position
-    public static float charx = 400, chary = 300;
 
     public static void drawBackground() {
         //Color.black.bind();

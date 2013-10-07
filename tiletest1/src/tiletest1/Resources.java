@@ -8,6 +8,7 @@ import org.newdawn.slick.openal.AudioLoader;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.ResourceLoader;
+import tiletest1.Main.*;
 
 /*
  * To change this template, choose Tools | Templates
@@ -15,7 +16,7 @@ import org.newdawn.slick.util.ResourceLoader;
  */
 /**
  *
- * @author Kuba
+ * @author JAKUB KAROLCZAK
  */
 public class Resources {
 

@@ -6,19 +6,18 @@ package tiletest1;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
-import static tiletest1.Draw.*;
 import static tiletest1.Main.*;
 import static tiletest1.Resources.*;
 
 /**
  *
- * @author Kuba
+ * @author JAKUB KAROLCZAK
  */
 public class Controls {
 
     //------------------------WALKING------------------------
     public static void WalkSound() {
-        SndStep.playAsSoundEffect(0.5f, 0.01f, false);
+        SndStep.playAsSoundEffect(1.0f, 0.01f, false);
     }
 
     public static void Walk() {
