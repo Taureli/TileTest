@@ -47,7 +47,9 @@ public class Main {
         initGL(); // init OpenGL here
         getDelta(); //called before to initialise lastFrame
         lastFPS = getTime();
-
+        
+        Draw.init();    //Preparing map etc.
+        
         //Constant loop till exit
         while (!Display.isCloseRequested()) {
 
@@ -57,7 +59,7 @@ public class Main {
 
             Display.update();
             
-            Display.sync(2000); //FPS cap
+            Display.sync(60); //FPS cap
             delta = getDelta();
             update(delta);
         }
@@ -119,6 +121,7 @@ public class Main {
         glLoadIdentity();
         glOrtho(0, 800, 0, 600, 1, -1);
         glMatrixMode(GL_MODELVIEW);
+        Display.setVSyncEnabled(true);
     }
     //-----------------------------------------------------------------
 

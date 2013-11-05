@@ -8,6 +8,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import static tiletest1.Main.*;
 import static tiletest1.Resources.*;
+import tiletest1.Character.*;
 
 /**
  *

@@ -26,7 +26,7 @@ public class Character {
         this.texture = texture;
     }
 
-    public void init() {
+    public static void init() {
         //Creating Hero
         Character Hero = new Character("Hero", charx, chary, CHARACTER_SIZE, ImgHero);
     }

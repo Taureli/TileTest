@@ -22,6 +22,7 @@ public class Resources {
 
     //Textures
     static Texture ImgWall;     //Walls
+    static Texture ImgWall2;    //Wall with vines
     static Texture ImgDirt;     //Dirt floor
     static Texture ImgHero;     //Hero (static - no animations)
     //Audio
@@ -59,6 +60,8 @@ public class Resources {
             System.out.println(">> Texture width: " + ImgHero.getTextureWidth());
             System.out.println(">> Texture height: " + ImgHero.getTextureHeight());
             System.out.println(">> Texture ID: " + ImgHero.getTextureID());
+            
+            ImgWall2 = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/wall2.png"));
             //-------------------------------------------------------
             
             //--------------------Loading sounds---------------------
