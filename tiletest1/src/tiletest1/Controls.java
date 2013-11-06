@@ -24,19 +24,19 @@ public class Controls {
     public static void Walk() {
         if (Keyboard.isKeyDown(Keyboard.KEY_A)) {
             charx -= charSpeed * delta;
-            WalkSound();
+            //WalkSound();
         }
         if (Keyboard.isKeyDown(Keyboard.KEY_D)) {
             charx += charSpeed * delta;
-            WalkSound();
+           // WalkSound();
         }
         if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
             chary += charSpeed * delta;
-            WalkSound();
+          //  WalkSound();
         }
         if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
             chary -= charSpeed * delta;
-            WalkSound();
+          //  WalkSound();
         }
 
         //Preventing char from leaving screen
