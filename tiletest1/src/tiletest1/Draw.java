@@ -1,5 +1,7 @@
 package tiletest1;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL11.GL_NEAREST;
@@ -25,28 +27,38 @@ import static tiletest1.Resources.*;
  *
  * @author JAKUB KAROLCZAK
  */
-public class Draw {
-
+public class Draw{
+    
     public static int map[][] = new int[18][25];
 
+    //-----------Generating random walls---------
     public static void init() {
 
         Random rand = new Random();
-        int randWall, i = 0, j = 0;
+        int randWall = 0, i = 0, j = 0;
+        boolean pom = false;            //To somewhat prevent generating 2 mossy walls next to each other
 
-        for (i = 0; i == 17; i++) {
-
-            for (j = 0; j == 24; j++) {
-
-                randWall = rand.nextInt(4);
+        for (i = 0; i <= 17; i++) {
+            for (j = 0; j <= 24; j++) {
+                
+                if(pom){             //If previously generated mossy wall
+                    randWall = 1;    //Generate regular one
+                    pom = false;
+                } else {
+                    randWall = rand.nextInt(4);
+                    if(randWall == 0)
+                        pom = true;
+                    else
+                        pom = false;
+                }
                 map[i][j] = randWall;
-
+                
             }
-
         }
 
     }
-
+    //--------------------------------------------
+    
     public static void drawBackground() {
         //Color.black.bind();
 
@@ -79,10 +91,7 @@ public class Draw {
         glEnd();
     }
 
-    public static void drawMap() {
-
-//        Random rand = new Random();
-//        int randWall;
+    public static void drawMap(){
 
         int i = 0, j = 0;
 
@@ -99,7 +108,7 @@ public class Draw {
                         //Color.lightGray.bind();
                         ImgWall.bind();
                     }
-
+                    
                     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
                     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
