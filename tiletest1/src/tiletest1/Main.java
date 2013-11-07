@@ -48,7 +48,8 @@ public class Main {
         getDelta(); //called before to initialise lastFrame
         lastFPS = getTime();
         
-        Draw.init();    //Preparing map etc.
+        //Draw.init();    //Preparing map etc.
+        MapGen.init();
         
         //Constant loop till exit
         while (!Display.isCloseRequested()) {

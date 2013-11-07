@@ -17,6 +17,7 @@ import static org.lwjgl.opengl.GL11.glVertex2f;
 //import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.Color;
 import static tiletest1.Main.*;
+import static tiletest1.MapGen.map2;
 import static tiletest1.Resources.*;
 
 /*
@@ -27,8 +28,8 @@ import static tiletest1.Resources.*;
  *
  * @author JAKUB KAROLCZAK
  */
-public class Draw{
-    
+public class Draw {
+
     public static int map[][] = new int[18][25];
 
     //-----------Generating random walls---------
@@ -40,25 +41,26 @@ public class Draw{
 
         for (i = 0; i <= 17; i++) {
             for (j = 0; j <= 24; j++) {
-                
-                if(pom){             //If previously generated mossy wall
+
+                if (pom) {             //If previously generated mossy wall
                     randWall = 1;    //Generate regular one
                     pom = false;
                 } else {
                     randWall = rand.nextInt(4);
-                    if(randWall == 0)
+                    if (randWall == 0) {
                         pom = true;
-                    else
+                    } else {
                         pom = false;
+                    }
                 }
                 map[i][j] = randWall;
-                
+
             }
         }
 
     }
     //--------------------------------------------
-    
+
     public static void drawBackground() {
         //Color.black.bind();
 
@@ -91,7 +93,7 @@ public class Draw{
         glEnd();
     }
 
-    public static void drawMap(){
+    public static void drawMap() {
 
         int i = 0, j = 0;
 
@@ -99,46 +101,61 @@ public class Draw{
 
             for (tilex = TILE_SIZE; tilex <= DISPLAY_WIDTH - TILE_SIZE; tilex = tilex + 2 * TILE_SIZE) {
 
-                if (tiley == TILE_SIZE || tilex == TILE_SIZE || tiley >= DISPLAY_HEIGHT - 3 * TILE_SIZE || tilex >= DISPLAY_WIDTH - TILE_SIZE) {
-                    //Drawnig walls
+                (map2[i][j].texture).bind();
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
-                    if (map[i][j] == 0) {
-                        ImgWall2.bind();
-                    } else {
-                        //Color.lightGray.bind();
-                        ImgWall.bind();
-                    }
-                    
-                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+                glBegin(GL_QUADS);
+                glTexCoord2f(0, 1);
+                glVertex2f(tilex - map2[i][j].size, tiley - map2[i][j].size);
+                glTexCoord2f(1, 1);
+                glVertex2f(tilex + map2[i][j].size, tiley - map2[i][j].size);
+                glTexCoord2f(1, 0);
+                glVertex2f(tilex + map2[i][j].size, tiley + map2[i][j].size);
+                glTexCoord2f(0, 0);
+                glVertex2f(tilex - map2[i][j].size, tiley + map2[i][j].size);
+                glEnd();
 
-                    glBegin(GL_QUADS);
-                    glTexCoord2f(0, 1);
-                    glVertex2f(tilex - TILE_SIZE, tiley - TILE_SIZE);
-                    glTexCoord2f(1, 1);
-                    glVertex2f(tilex + TILE_SIZE, tiley - TILE_SIZE);
-                    glTexCoord2f(1, 0);
-                    glVertex2f(tilex + TILE_SIZE, tiley + TILE_SIZE);
-                    glTexCoord2f(0, 0);
-                    glVertex2f(tilex - TILE_SIZE, tiley + TILE_SIZE);
-                    glEnd();
-                } else {
-
-                    ImgDirt.bind();
-                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-                    glBegin(GL_QUADS);
-                    glTexCoord2f(0, 1);
-                    glVertex2f(tilex - TILE_SIZE, tiley - TILE_SIZE);
-                    glTexCoord2f(1, 1);
-                    glVertex2f(tilex + TILE_SIZE, tiley - TILE_SIZE);
-                    glTexCoord2f(1, 0);
-                    glVertex2f(tilex + TILE_SIZE, tiley + TILE_SIZE);
-                    glTexCoord2f(0, 0);
-                    glVertex2f(tilex - TILE_SIZE, tiley + TILE_SIZE);
-                    glEnd();
-                }
+//                if (tiley == TILE_SIZE || tilex == TILE_SIZE || tiley >= DISPLAY_HEIGHT - 3 * TILE_SIZE || tilex >= DISPLAY_WIDTH - TILE_SIZE) {
+//                    //Drawnig walls
+//
+//                    if (map[i][j] == 0) {
+//                        ImgWall2.bind();
+//                    } else {
+//                        //Color.lightGray.bind();
+//                        ImgWall.bind();
+//                    }
+//                    
+//                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+//                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//
+//                    glBegin(GL_QUADS);
+//                    glTexCoord2f(0, 1);
+//                    glVertex2f(tilex - TILE_SIZE, tiley - TILE_SIZE);
+//                    glTexCoord2f(1, 1);
+//                    glVertex2f(tilex + TILE_SIZE, tiley - TILE_SIZE);
+//                    glTexCoord2f(1, 0);
+//                    glVertex2f(tilex + TILE_SIZE, tiley + TILE_SIZE);
+//                    glTexCoord2f(0, 0);
+//                    glVertex2f(tilex - TILE_SIZE, tiley + TILE_SIZE);
+//                    glEnd();
+//                } else {
+//
+//                    ImgDirt.bind();
+//                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+//                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//
+//                    glBegin(GL_QUADS);
+//                    glTexCoord2f(0, 1);
+//                    glVertex2f(tilex - TILE_SIZE, tiley - TILE_SIZE);
+//                    glTexCoord2f(1, 1);
+//                    glVertex2f(tilex + TILE_SIZE, tiley - TILE_SIZE);
+//                    glTexCoord2f(1, 0);
+//                    glVertex2f(tilex + TILE_SIZE, tiley + TILE_SIZE);
+//                    glTexCoord2f(0, 0);
+//                    glVertex2f(tilex - TILE_SIZE, tiley + TILE_SIZE);
+//                    glEnd();
+//                }
                 j++;
             }
             j = 0;
